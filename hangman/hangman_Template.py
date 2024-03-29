@@ -43,9 +43,18 @@ class Hangman:
     def __init__(self, word_list, num_lives=5):
         self.word_list = word_list
         self.num_lives = num_lives
-        word = random.choice(word_list)
-        num_letters = {len(i) for i in word_list}
-        word_guessed = {num_letters }
+        word = (random.choice(word_list))
+        print(word)
+        num_letters = len(word)
+        word_guessed = []
+        for word in word:
+            word_guessed.append("_")
+            
+        
+
+        print(word_guessed)
+
+        
         print(f"The mistery word has {num_letters} characters")        # TODO 2: Initialize the attributes as indicated in the docstring
         # TODO 2: Print two message upon initialization:
         # 1. "The mistery word has {num_letters} characters"
