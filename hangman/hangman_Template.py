@@ -43,23 +43,16 @@ class Hangman:
     def __init__(self, word_list, num_lives=5):
         self.word_list = word_list
         self.num_lives = num_lives
-        word = (random.choice(word_list))
-        print(word)
-        num_letters = len(word)
-        word_guessed = []
+        self.word = word = (random.choice(word_list))
+        self.word_guessed = word_guessed = []
         for word in word:
             word_guessed.append("_")
-            
+        self.list_letters = list_letters = []
         
-
-        print(word_guessed)
-
-        
-        print(f"The mistery word has {num_letters} characters")        # TODO 2: Initialize the attributes as indicated in the docstring
-        # TODO 2: Print two message upon initialization:
-        # 1. "The mistery word has {num_letters} characters"
-        # 2. {word_guessed}
-        pass
+        num_letters = len(self.word)
+        print(f"The mistery word has {num_letters} characters")
+        print(self.word_guessed)     
+    pass
 
     def check_letter(self, letter) -> None:
         '''
@@ -73,26 +66,46 @@ class Hangman:
             The letter to be checked
 
         '''
+        
+        self.letter = letter
+
+        found = False
+
+        for i, char in enumerate(self.word):
+            if char == letter:
+                self.word_guessed[i] = letter
+                self.num_letters -= 1
+                found = True
+            if not found:
+                self.num_lives -= 1
+                self.list_letters.append(self.letter)
+
         # TODO 3: Check if the letter is in the word. TIP: You can use the lower() method to convert the letter to lowercase
         # TODO 3: If the letter is in the word, replace the '_' in the word_guessed list with the letter
         # TODO 3: If the letter is in the word, the number of UNIQUE letters in the word that have not been guessed yet has to be reduced by 1
         # TODO 3: If the letter is not in the word, reduce the number of lives by 1
         # Be careful! A letter can contain the same letter more than once. TIP: Take a look at the index() method in the string class
-        pass
+            pass
 
-    def ask_letter(self):
+    def ask_letter(self): 
         '''
         Asks the user for a letter and checks two things:
         1. If the letter has already been tried
         2. If the character is a single character
         If it passes both checks, it calls the check_letter method.
         '''
+
+
+        while True:
+
+
+
         # TODO 1: Ask the user for a letter iteratively until the user enters a valid letter
         # TODO 1: Assign the letter to a variable called `letter`
         # TODO 1: The letter has to comply with the following criteria: It has to be a single character. If it is not, print "Please, enter just one character"
         # TODO 2. It has to be a letter that has not been tried yet. Use the list_letters attribute to check this. If it has been tried, print "{letter} was already tried".
         # TODO 3: If the letter is valid, call the check_letter method
-        pass
+            pass
 
 def play_game(word_list):
     # As an aid, part of the code is already provided:
